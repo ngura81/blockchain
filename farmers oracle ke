@@ -1,0 +1,118 @@
+pragma solidity ^0.5.0;
+
+contract Farmeroracle3{
+
+mapping(uint=>Farmer) public farmers;
+mapping(uint=>Agent) public agents;
+mapping(uint=>OtherCrop) public othercrops;
+mapping(uint=>OtherLivestock) public otherlivestocks;
+mapping(uint=>EntityAssociation) public entityassociations;
+
+
+uint public farmersCount;
+uint public agentsCount;
+uint public othercropsCount;
+uint public otherlivestocksCount;
+uint public entityassociationsCount;
+
+//Modelling a Farmer
+struct Farmer{
+	uint id;
+	string fName;
+	string mName;
+	//string surName;
+	//string nationalId;
+	//string phoneNumber;
+	//string gender;
+	//string dob;
+	//string countryOfCitizenship;
+	//string registrationDate;
+	//string lonlatOfFarm;
+	//string locationNameofFarm;
+	//string farmingType;
+	//string mainCrop;
+	//string mainLivestock;
+	//string areaOfMainCrop;
+	//uint numberOfMainLivestock;
+	//string associatedAgent;
+	//string imageUrl;
+	//string nationalIdUrl;
+	//string voiceUrl;
+	//string fingerBiometricUrl;
+}
+
+
+struct OtherCrop{
+uint id;
+string cropType;
+string cropCover;
+}
+
+struct OtherLivestock{
+uint id;
+string livestockType;
+uint livestockNumber;
+}
+
+struct EntityAssociation{
+uint id;
+string entityName;
+string entityRole;
+//string entityService;
+//string lonlat;
+//string locationName;
+//string entityAssociationDocUrl;
+}
+
+//Modelling an Agent
+struct Agent{
+	uint id;
+	string fName;
+	string mName;
+	//string surName;
+	//string nationalId;
+	//string phoneNumber;
+	//string gender;
+	//string dob;
+	//string countryOfCitizenship;
+	//string registrationDate;
+	//string lonlatOfAgent;
+	//string locationNameofAgent;
+	//string agencyType;
+	//individual or entity
+	//string nationalIdUrl;
+	//string voiceUrl;
+	//string fingerBiometricUrl;
+}
+
+constructor () public{
+
+
+	}
+
+	function setFarmer(string memory _fname,string memory _mname) public{
+	farmersCount++;
+	farmers[farmersCount]=Farmer(farmersCount,_fname,_mname);
+	}
+
+	function setAgent(string memory _fname,string memory _mname) public{
+	agentsCount++;
+	agents[agentsCount]=Agent(agentsCount,_fname,_mname);
+	}
+
+	function setOthercrop(string memory _croptype,string memory _cropcover) public{
+	othercropsCount++;
+	othercrops[othercropsCount]=OtherCrop(othercropsCount,_croptype,_cropcover);
+	}
+
+	function setOtherLivestock(string memory _livestocktype,uint _livestocknumber) public{
+	otherlivestocksCount++;
+	otherlivestocks[otherlivestocksCount]=OtherLivestock(otherlivestocksCount,_livestocktype,_livestocknumber);
+	}
+
+	function setEntityAssociation(string memory _entityname,string memory _entityrole) public{
+	entityassociationsCount++;
+	entityassociations[entityassociationsCount]=EntityAssociation(entityassociationsCount,_entityname,_entityrole);
+	}
+	
+}
